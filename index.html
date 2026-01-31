@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Love ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #f3eaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* MAIN CARD */
+.wrapper {
+  background: #eef3f2;
+  width: 360px;
+  padding: 40px 25px;
+  border-radius: 18px;
+  text-align: center;
+  animation: fadeUp 1.2s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TYPEWRITER TEXT */
+.type {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #e46b78;
+  min-height: 40px;
+}
+
+.date {
+
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #777;
+  margin-top: 5px;
+  min-height: 20px;
+}
+
+/* PHOTO */
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 6px solid #e46b78;
+  object-fit: cover;
+  margin-top: 20px;
+  animation: pop 1s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  80% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* NAME */
+.name {
+  margin-top: 15px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e46b78;
+}
+
+/* BUTTON */
+button {
+  margin: 25px 0;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 30px;
+  background: #e46b78;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(228,107,120,.6); }
+  70% { box-shadow: 0 0 0 14px rgba(228,107,120,0); }
+  100% { box-shadow: 0 0 0 0 rgba(228,107,120,0); }
+}
+
+/* MESSAGE */
+.message {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  display: none;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* HEART FALL */
+.heart {
+  position: fixed;
+  top: -20px;
+  font-size: 20px;
+  animation: fall 3s linear;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- TYPEWRITER -->
+  <div class="type" id="title"></div>
+  <div class="date" id="date"></div>
+
+  <!-- PHOTO -->
+  <img src="love.jpeg" class="photo">
+
+  <div class="name">Neeru Waiba ❤️</div>
+
+  <button onclick="showSurprise()">Tap for Surprise 💌</button>
+
+  <div class="message" id="msg">
+    <p>
+      Happy Birthday to the most beautiful soul in my life 💖  
+      You don’t just light up my world — you <b>are</b> my world.
+    </p>
+    <p>
+      Every smile of yours calms my heart,  
+      every moment with you feels like home.
+    </p>
+  </div>
+</div>
+
+<script>
+/* TYPEWRITER EFFECT */
+const titleText = "Happy Birthday 🎉";
+const dateText = "26 February 2001";
+
+let i = 0;
+let j = 0;
+
+function typeTitle() {
+  if (i < titleText.length) {
+    document.getElementById("title").innerHTML += titleText.charAt(i);
+    i++;
+    setTimeout(typeTitle, 90);
+  } else {
+    setTimeout(typeDate, 400);
+  }
+}
+
+function typeDate() {
+  if (j < dateText.length) {
+    document.getElementById("date").innerHTML += dateText.charAt(j);
+    j++;
+    setTimeout(typeDate, 80);
+  }
+}
+
+typeTitle();
+
+/* SURPRISE */
+function showSurprise() {
+  document.getElementById("msg").style.display = "block";
+
+  for (let i = 0; i < 25; i++) {
+    const h = document.createElement("div");
+    h.className = "heart";
+    h.innerHTML = "❤️";
+    h.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 3000);
+  }
+}
+</script>
+
+</body>
+</html>
