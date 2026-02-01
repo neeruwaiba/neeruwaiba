@@ -104,13 +104,9 @@ button {
   color: #666;
   font-size: 0.95rem;
   line-height: 1.7;
+  white-space: pre-line;
   display: none;
-  animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  margin-top: 10px;
 }
 
 /* HEART */
@@ -120,7 +116,7 @@ button {
   pointer-events: none;
 }
 
-/* MOBILE TUNING */
+/* MOBILE */
 @media (max-width: 400px) {
   .type { font-size: 1.3rem; }
   .photo { width: 120px; height: 120px; }
@@ -135,27 +131,18 @@ button {
   <div class="type" id="title"></div>
   <div class="date" id="date"></div>
 
-  <img src="love.jpeg" class="photo">
+  <img src="https://i.imgur.com/8Km9tLL.jpg" class="photo">
   <div class="name">Neeru Waiba ❤️</div>
 
   <button onclick="showSurprise()">Tap for Surprise 💌</button>
 
-  <div class="message" id="msg">
-    <p>
-      Happy Birthday to the most beautiful soul in my life 💖  
-      You don’t just light up my world — you <b>are</b> my world.
-    </p>
-    <p>
-      Every smile of yours calms my heart,  
-      every moment with you feels like home.
-    </p>
-  </div>
+  <div class="message" id="msg"></div>
 </div>
 
 <script>
-/* TYPEWRITER */
+/* TITLE TYPEWRITER */
 const titleText = "Happy Birthday 🎉";
-const dateText = "26th February 2001";
+const dateText = "5 April 1996";
 let i = 0, j = 0;
 
 function typeTitle() {
@@ -172,43 +159,39 @@ function typeDate() {
 }
 typeTitle();
 
-/* AUTO-ADAPTIVE HEARTS */
+/* LOVE MESSAGE */
+const loveMessage =
+`Happy Birthday to the most beautiful soul in my life 💖
+You don’t just light up my world — you are my world.
+
+Every smile of yours calms my heart,
+every moment with you feels like home.`;
+
+/* SURPRISE */
 function showSurprise() {
   msg.style.display = "block";
+  msg.innerHTML = "";
 
-  const w = window.innerWidth;
-
-  let heartCount, minSize, maxSize, duration;
-
-  if (w > 1024) {        // Desktop
-    heartCount = 45;
-    minSize = 22;
-    maxSize = 42;
-    duration = [3, 5];
-  } else if (w > 600) {  // Tablet
-    heartCount = 30;
-    minSize = 18;
-    maxSize = 32;
-    duration = [3, 4.5];
-  } else {               // Mobile
-    heartCount = 18;
-    minSize = 14;
-    maxSize = 24;
-    duration = [2.5, 4];
+  let index = 0;
+  function typeMessage() {
+    if (index < loveMessage.length) {
+      msg.innerHTML += loveMessage.charAt(index++);
+      setTimeout(typeMessage, 35);
+    }
   }
+  typeMessage();
+
+  // ❤️ HEARTS (auto adaptive)
+  const w = window.innerWidth;
+  const heartCount = w > 1024 ? 45 : w > 600 ? 30 : 18;
 
   for (let i = 0; i < heartCount; i++) {
     const h = document.createElement("div");
     h.className = "heart";
     h.innerHTML = "❤️";
-
     h.style.left = Math.random() * (window.innerWidth - 40) + "px";
-    h.style.fontSize =
-      Math.random() * (maxSize - minSize) + minSize + "px";
-    h.style.animation = `fall ${
-      Math.random() * (duration[1] - duration[0]) + duration[0]
-    }s linear`;
-
+    h.style.fontSize = Math.random() * 20 + 20 + "px";
+    h.style.animation = `fall ${3 + Math.random() * 2}s linear`;
     document.body.appendChild(h);
     setTimeout(() => h.remove(), 6000);
   }
