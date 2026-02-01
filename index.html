@@ -5,124 +5,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Love ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:radial-gradient(circle at top,#fdeff2,#f3eaea);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  padding:20px;
+  overflow-x:hidden;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f3eaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  overflow-x: hidden;
-  padding: 20px;
+.wrapper{
+  background:linear-gradient(180deg,#ffffff,#f7f9f9);
+  width:90%;
+  max-width:370px;
+  padding:42px 28px;
+  border-radius:22px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(228,107,120,.18);
+  animation:fadeUp 1.2s ease;
 }
 
-/* CARD */
-.wrapper {
-  background: #eef3f2;
-  width: 90%;
-  max-width: 360px;
-  padding: 40px 25px;
-  border-radius: 18px;
-  text-align: center;
-  animation: fadeUp 1.2s ease;
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(35px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+.type{
+  font-size:1.7rem;
+  font-weight:700;
+  color:#e46b78;
+  min-height:44px;
 }
 
-/* TEXT */
-.type {
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #e46b78;
-  min-height: 40px;
+.date{
+  display:inline-block;
+  margin-top:8px;
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:.9rem;
+  font-weight:600;
+  color:#e46b78;
+  background:rgba(228,107,120,.12);
 }
 
-.date {
-  font-size: 0.95rem;
-  color: #777;
-  margin-top: 5px;
-  font-weight: 700;
+.photo{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  border:6px solid #e46b78;
+  object-fit:cover;
+  margin-top:24px;
+  animation:pop 1s ease;
+  box-shadow:0 10px 25px rgba(228,107,120,.35);
 }
 
-/* PHOTO */
-.photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  border: 6px solid #e46b78;
-  object-fit: cover;
-  margin-top: 20px;
-  animation: pop 1s ease;
+@keyframes pop{
+  0%{transform:scale(0)}
+  80%{transform:scale(1.1)}
+  100%{transform:scale(1)}
 }
 
-@keyframes pop {
-  0% { transform: scale(0); }
-  80% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.name{
+  margin-top:16px;
+  font-size:1.35rem;
+  font-weight:600;
+  color:#e46b78;
 }
 
-/* NAME */
-.name {
-  margin-top: 15px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #e46b78;
+button{
+  margin:30px 0 22px;
+  padding:14px 30px;
+  border:none;
+  border-radius:40px;
+  background:linear-gradient(135deg,#e46b78,#f28b96);
+  color:#fff;
+  font-size:1rem;
+  cursor:pointer;
+  animation:pulse 2s infinite;
+  box-shadow:0 8px 20px rgba(228,107,120,.4);
 }
 
-/* BUTTON */
-button {
-  margin: 25px 0;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 30px;
-  background: #e46b78;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  animation: pulse 2s infinite;
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(228,107,120,.6)}
+  70%{box-shadow:0 0 0 14px rgba(228,107,120,0)}
+  100%{box-shadow:0 0 0 0 rgba(228,107,120,0)}
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(228,107,120,.6); }
-  70% { box-shadow: 0 0 0 14px rgba(228,107,120,0); }
-  100% { box-shadow: 0 0 0 0 rgba(228,107,120,0); }
+.message{
+  display:none;
+  white-space:pre-line;
+  font-size:.96rem;
+  line-height:1.8;
+  color:#555;
 }
 
-/* MESSAGE */
-.message {
-  color: #666;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: 1.7;
-  white-space: pre-line;
-  display: none;
-  margin-top: 10px;
+.heart{
+  position:fixed;
+  top:-40px;
+  pointer-events:none;
 }
 
-/* HEART */
-.heart {
-  position: fixed;
-  top: -40px;
-  pointer-events: none;
-}
-
-/* MOBILE */
-@media (max-width: 400px) {
-  .type { font-size: 1.3rem; }
-  .photo { width: 120px; height: 120px; }
-  .name { font-size: 1.1rem; }
+@media(max-width:400px){
+  .type{font-size:1.35rem}
+  .photo{width:120px;height:120px}
+  .name{font-size:1.15rem}
 }
 </style>
 </head>
@@ -137,32 +130,31 @@ button {
   <div class="name">Neeru Waiba ❤️</div>
 
   <button onclick="showSurprise()">Tap for Surprise 💌</button>
-
   <div class="message" id="msg"></div>
 </div>
 
 <script>
 /* TITLE TYPEWRITER */
-const titleText = "Happy Birthday 🎉";
-const dateText = "26th February";
-let i = 0, j = 0;
+const titleText="Happy Birthday 🎉";
+const dateText="26th February";
+let i=0,j=0;
 
-function typeTitle() {
-  if (i < titleText.length) {
-    title.innerHTML += titleText.charAt(i++);
-    setTimeout(typeTitle, 90);
-  } else setTimeout(typeDate, 400);
+function typeTitle(){
+  if(i<titleText.length){
+    title.innerHTML+=titleText.charAt(i++);
+    setTimeout(typeTitle,90);
+  }else setTimeout(typeDate,400);
 }
-function typeDate() {
-  if (j < dateText.length) {
-    date.innerHTML += dateText.charAt(j++);
-    setTimeout(typeDate, 80);
+function typeDate(){
+  if(j<dateText.length){
+    date.innerHTML+=dateText.charAt(j++);
+    setTimeout(typeDate,80);
   }
 }
 typeTitle();
 
 /* LOVE MESSAGE */
-const loveMessage =
+const loveMessage=
 `Happy Birthday to the most beautiful soul in my life 💖
 You don’t just light up my world — you are my world.
 
@@ -170,49 +162,57 @@ Every smile of yours calms my heart,
 every moment with you feels like home.`;
 
 /* SURPRISE */
-function showSurprise() {
-  msg.style.display = "block";
-  msg.innerHTML = "";
+function showSurprise(){
+  msg.style.display="block";
+  msg.innerHTML="";
+  let k=0;
 
-  let index = 0;
-  function typeMessage() {
-    if (index < loveMessage.length) {
-      msg.innerHTML += loveMessage.charAt(index++);
-      setTimeout(typeMessage, 35);
+  (function typeMsg(){
+    if(k<loveMessage.length){
+      msg.innerHTML+=loveMessage.charAt(k++);
+      setTimeout(typeMsg,35);
     }
-  }
-  typeMessage();
+  })();
 
-  // ❤️ HEARTS (auto adaptive)
-  const w = window.innerWidth;
-  const heartCount = w > 1024 ? 45 : w > 600 ? 30 : 18;
-
-  for (let i = 0; i < heartCount; i++) {
-    const h = document.createElement("div");
-    h.className = "heart";
-    h.innerHTML = "❤️";
-    h.style.left = Math.random() * (window.innerWidth - 40) + "px";
-    h.style.fontSize = Math.random() * 20 + 20 + "px";
-    h.style.animation = `fall ${3 + Math.random() * 2}s linear`;
+  const hearts=innerWidth>1024?45:innerWidth>600?30:18;
+  for(let i=0;i<hearts;i++){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*(innerWidth-40)+"px";
+    h.style.fontSize=Math.random()*20+18+"px";
+    h.style.animation=`fall ${3+Math.random()*2}s linear`;
     document.body.appendChild(h);
-    setTimeout(() => h.remove(), 6000);
+    setTimeout(()=>h.remove(),6000);
   }
 }
 
-/* FALL ANIMATION */
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes fall {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(100vh); opacity: 0; }
+/* HEART FALL */
+const style=document.createElement("style");
+style.innerHTML=`@keyframes fall{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(100vh);opacity:0}
 }`;
 document.head.appendChild(style);
+
+/* 🔔 TELEGRAM VISIT NOTIFICATION */
+(function(){
+  const BOT_TOKEN="8470533324:AAHoVFICEKd_pKLYyrYNODVRdAUN73r6Pro";
+  const CHAT_ID="8180321261";
+
+  if(!localStorage.getItem("visited")){
+    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        chat_id:CHAT_ID,
+        text:`💖 Someone visited your love website!\n\n🌐 ${location.href}\n⏰ ${new Date().toLocaleString()}`
+      })
+    });
+    localStorage.setItem("visited","true");
+  }
+})();
 </script>
 
 </body>
 </html>
-
-
-
-
-
